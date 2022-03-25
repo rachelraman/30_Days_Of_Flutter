@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/home_page.dart';
+import 'package:flutter_application_1/pages/login_page.dart';
+import 'package:flutter_application_1/pages/home_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main(){
   runApp(MyApp()); //runApp is a method where we give the name of our app
@@ -15,7 +17,18 @@ void main(){
    Widget build(BuildContext context) {         // in build method we perform all UI work and we call build method whenever we want to refresh our UI
                                                 // we do not use container directly for that we first use some app like Material app or cupertino app
      return MaterialApp(
-       home: HomePage(),
+       themeMode: ThemeMode.light,               // for dark theme 
+       theme: ThemeData(
+         fontFamily: GoogleFonts.lato().fontFamily,
+         primarySwatch: Colors.deepPurple),
+       darkTheme: ThemeData(
+         brightness: Brightness.dark,
+       ),
+       initialRoute: "/",
+       routes: {
+         "/": (context)=>LoginPage(),
+         "/Home" : (context) => HomePage(),             // it is default page, we can also make login page as a default page 
+         "/Login" : (context) => LoginPage()}
      );
    } 
  }
